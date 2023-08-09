@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xxxx.mapper.CustomerMapper">
+
+    <resultMap id="resultMap" type="com.xxxx.entity.Customer">
+        <result column="customerId" property="customerId"/>
+        <result column="userId" property="userId"/>
+        <result column="name" property="name"/>
+        <result column="address" property="address"/>
+        <result column="registered_time" property="registeredTime"/>
+        <result column="updated_time" property="updatedTime"/>
+    </resultMap>
+
+    <select id="getCustomer" resultMap="resultMap">
+        SELECT *
+        FROM tb_customer
+        where userId = #{userId}
+    </select>
+
+
+    <insert id="insertAll">
+        INSERT INTO tb_customer(userId, name, address)
+        VALUES (#{userId}, #{customer_name}, #{customer_address})
+    </insert>
+
+</mapper>
